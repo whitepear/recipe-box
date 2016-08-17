@@ -1,23 +1,17 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
-var key = 0;
-
-function keyGen () {
-	key++;
-	return key;
-}
 
 function Main (props) {
 	console.log(props.recipes);
-	
+	var key = 0;
 	return (
 		<div className="accordion-group">
 		  {Object.keys(props.recipes).map(function (recipeName) {
-				return <div className="accordion-unit" key={keyGen()}>
-			    <div className="accordion-header">{recipeName}</div>
+				return <div className="accordion-unit" key={key++}>
+			    <div className="accordion-header" id={key}>{recipeName}</div>
 			    <div className="accordion-body">
 				    {JSON.parse(props.recipes[recipeName]).map(function(ingredient) {
-				    	return <div>{ingredient}</div>
+				    	return <div key={key++}>{ingredient}</div>
 				    })} 	
 			    </div>	
 			  </div>	
@@ -26,7 +20,7 @@ function Main (props) {
 	)
 }
 
-React.propTypes = {
+Main.propTypes = {
 	recipes: PropTypes.object.isRequired,
 };
 
