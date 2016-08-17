@@ -2,23 +2,22 @@ var React = require('react');
 var Main = require('../components/Main.js');
 
 var MainContainer = React.createClass({
-	getInitialState: function () {
-		var defaultState = {
-			'Pumpkin Pie': ['Pumpkin Puree', 'Sweetened Condensed Milk', 'Eggs', 'Pumpkin Pie Spice', 'Pie Crust'],
-		   Spaghetti: ['Noodles', 'Tomato Sauce', '(Optional) Meatballs'],
-			'Onion Pie': ['Onion', 'Pie Crust', 'Sounds Yummy right?']
-		};
-
-		if (Object.keys(localStorage).length > 0) {
-			return localStorage;
-		} else {
-			return defaultState;
+	getInitialState: function () {		
+		// If localStorage is empty, push default recipes into localStorage
+		if (Object.keys(localStorage).length === 0) {			
+			localStorage.setItem('Pumpkin Pie', JSON.stringify(['Pumpkin Puree', 'Sweetened Condensed Milk', 'Eggs', 'Pumpkin Pie Spice', 'Pie Crust']));
+			localStorage.setItem('Spaghetti', JSON.stringify(['Noodles', 'Tomato Sauce', '(Optional) Meatballs']));
+			localStorage.setItem('Onion Pie', JSON.stringify(['Onion', 'Pie Crust', 'Sounds Yummy right?']));			
 		}		
+
+		return {
+			browserStorage: localStorage
+		}
 	},
 	render: function () {
 		return (
 			<div className="container">
-				<Main recipes={this.state} />
+				<Main recipes={this.state.browserStorage} />
 			</div>			
 		)
 	}
