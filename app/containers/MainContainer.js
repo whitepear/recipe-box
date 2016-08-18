@@ -1,7 +1,7 @@
 var React = require('react');
-var Main = require('../components/Main.js');
+var Accordion = require('../components/Accordion.js');
 
-var MainContainer = React.createClass({
+var MainContainer = React.createClass({	
 	getInitialState: function () {		
 		// If localStorage is empty, push default recipes into localStorage
 		if (Object.keys(localStorage).length === 0) {			
@@ -11,13 +11,18 @@ var MainContainer = React.createClass({
 		}		
 
 		return {
-			browserStorage: localStorage
+			browserStorage: localStorage			
 		}
-	},
+	},	
 	render: function () {
+		var key = 0;
 		return (
 			<div className="container">
-				<Main recipes={this.state.browserStorage} />
+				<div className="accordion-container">
+					{Object.keys(this.state.browserStorage).map(function (recipeName) {
+						return <Accordion key={key++} recipeName={recipeName} ingredients={this.state.browserStorage[recipeName]} />
+					}.bind(this))}
+				</div>				
 			</div>			
 		)
 	}
