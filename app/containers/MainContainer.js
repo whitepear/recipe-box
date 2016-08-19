@@ -14,13 +14,24 @@ var MainContainer = React.createClass({
 			browserStorage: localStorage			
 		}
 	},	
+	handleEditRecipe: function (e) {
+		console.log(e.target.parentNode.id);
+	},
+	handleDeleteRecipe: function (e) {
+		console.log(e.target.parentNode.id);
+	},
 	render: function () {
 		var key = 0;
 		return (
 			<div className="container">
 				<div className="accordion-container">
 					{Object.keys(this.state.browserStorage).map(function (recipeName) {
-						return <Accordion key={key++} recipeName={recipeName} ingredients={this.state.browserStorage[recipeName]} />
+						return <Accordion 
+											key={key++}
+											onEditRecipe={this.handleEditRecipe}
+											onDeleteRecipe={this.handleDeleteRecipe}
+											recipeName={recipeName} 
+											ingredients={this.state.browserStorage[recipeName]} />
 					}.bind(this))}
 				</div>				
 			</div>			
