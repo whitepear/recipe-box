@@ -5,8 +5,8 @@ var Accordion = React.createClass({
 	propTypes: {
 		recipeName: PropTypes.string.isRequired,
 		ingredients: PropTypes.string.isRequired,
-		onEditRecipe: PropTypes.func.isRequired,
-		onDeleteRecipe: PropTypes.func.isRequired
+		onModalCall: PropTypes.func.isRequired,
+		onRecipeDelete: PropTypes.func.isRequired
 	},
 	getInitialState: function () {
 		return {
@@ -38,8 +38,8 @@ var Accordion = React.createClass({
 						})}
 					</div>
 					<div id={this.props.recipeName}>
-						<button type="button" className="btn btn-danger" onClick={this.props.onDeleteRecipe}>Delete</button>
-						<button type="button" className="btn btn-info" onClick={this.props.onEditRecipe}>Edit</button>
+						<button type="button" className="btn btn-danger" onClick={this.props.onRecipeDelete}>Delete</button>
+						<button type="button" className="btn btn-info" onClick={this.props.onModalCall}>Edit</button>
 					</div>
 				</div>
 			</div>
