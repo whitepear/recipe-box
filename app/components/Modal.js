@@ -6,20 +6,12 @@ function Modal (props) {
 		return (
 			<div className="active-modal-container">
 				<div className="active-modal">
-					<div className="modal-header">
-						{if (props.modalType === 'Edit') {
-							<div>Edit Recipe</div>
-						} else if (props.modalType === 'Create') {
-							<div>Add a Recipe</div>
-						}}
+					<div className="modal-header">						
+						<div>{props.modalType} Recipe</div>
 					</div>
 					<div className="modal-body"></div>
-					<div className="modal-footer">
-						{if (props.modalType === 'Edit') {
-							<button>Edit Recipe</button>
-						} else if (props.modalType === 'Create') {
-							<button>Add Recipe</button>
-						}}
+					<div className="modal-footer">						
+						<button>{props.modalType} Recipe</button>						
 						<button>Close</button>
 					</div>
 				</div>
