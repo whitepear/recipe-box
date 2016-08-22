@@ -58,18 +58,18 @@ var MainContainer = React.createClass({
 			});
 		}
 	},
-	handleFormSubmit: function (e) {		
-		// Handle case where either title-input field is empty
-		// Handle case where either input field consists solely of spaces
-		
-		var ingredientArray = this.state.inputIngredientList.split(',');		
+	handleFormSubmit: function (e) {
 		if (this.state.modalType === 'Edit' && this.state.inputRecipeTitle !== this.state.modalCallOrigin) {
 			// if editing a recipe and editing its title, a new localStorage property must be created and 
 			// the original property must be deleted in order to simulate "overwriting" a property
 			localStorage.removeItem(this.state.modalCallOrigin);
-		} 			
-			localStorage.setItem(this.state.inputRecipeTitle, JSON.stringify(ingredientArray));
-			this.handleModalClose();		    	
+		}		
+		var ingredientArray = this.state.inputIngredientList.split(',');	
+		ingredientArray = ingredientArray.map(function (ingredient) {
+			return ingredient.trim();
+		});						
+		localStorage.setItem(this.state.inputRecipeTitle, JSON.stringify(ingredientArray));
+		this.handleModalClose();			    	
 	},
 	handleModalClose: function (e) {				
 	  this.setState({
