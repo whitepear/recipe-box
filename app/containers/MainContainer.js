@@ -1,5 +1,6 @@
 var React = require('react');
 var Accordion = require('../components/Accordion.js');
+var Modal = require('../components/Modal.js');
 
 var MainContainer = React.createClass({	
 	getInitialState: function () {		
@@ -11,15 +12,53 @@ var MainContainer = React.createClass({
 		}		
 
 		return {
-			browserStorage: localStorage			
+			browserStorage: localStorage,
+			modalOpen: false,
+			modalType: '',
+			modalCallOrigin: '',
+			inputRecipeTitle: '',
+			inputIngredientList: ''			
 		}
 	},	
-	handleEditRecipe: function (e) {
+	handleRecipeDelete: function (e) {
+		// delete Recipe from localStorage
 		console.log(e.target.parentNode.id);
 	},
-	handleDeleteRecipe: function (e) {
-		console.log(e.target.parentNode.id);
+	handleModalCall: function (e) {
+		// activate modal (open and type)
+		var buttonText = e.target.innerText;
+		var parentId = e.target.parentNode.id;
+		this.setState({
+			modalOpen: true,
+			modalType: buttonText,
+			modalCallOrigin: parentId
+		});		
+	},	
+	handleTextInput: function (e) {
+		console.log();
+		if (e.target.id === 'recipeTitle') {
+			this.setState({
+				inputRecipeTitle: e.target.value
+			}, function () {
+				console.log(this.state);
+			});
+		} else if (e.target.id === 'ingredientInput') {
+			this.setState({
+				inputIngredientList: e.target.value
+			}, function () {
+				console.log(this.state);
+			});
+		}
 	},
+	handleFormSubmit: function (e) {
+		console.log(e.target);
+    // check button value (edit or add)
+    // and modify localStorage accordingly		
+	},
+	handleModalClose: function (e) {
+		console.log(e.target);
+	// modal will likely be passed a function that updates state on close, reset body header field states too
+	},	
 	render: function () {
 		var key = 0;
 		return (
@@ -27,13 +66,23 @@ var MainContainer = React.createClass({
 				<div className="accordion-container">
 					{Object.keys(this.state.browserStorage).map(function (recipeName) {
 						return <Accordion 
-											key={key++}
-											onEditRecipe={this.handleEditRecipe}
-											onDeleteRecipe={this.handleDeleteRecipe}
+											key={key++}																					
 											recipeName={recipeName} 
-											ingredients={this.state.browserStorage[recipeName]} />
+											ingredients={this.state.browserStorage[recipeName]}
+											onModalCall={this.handleModalCall}	
+											onRecipeDelete={this.handleRecipeDelete} />
 					}.bind(this))}
-				</div>				
+				</div>
+				<Modal 
+					modalOpen={this.state.modalOpen} 
+					modalType={this.state.modalType} 
+					modalCallOrigin={this.state.modalCallOrigin}
+					onTextInput={this.handleTextInput}					
+					inputRecipeTitle={this.state.inputRecipeTitle}
+					inputIngredientList={this.state.inputIngredientList}
+					onFormSubmit={this.handleFormSubmit}
+					onModalClose={this.handleModalClose}
+					/>				
 			</div>			
 		)
 	}
