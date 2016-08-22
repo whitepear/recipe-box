@@ -1,6 +1,22 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 
+//
+//
+// implement the following in handleModalCall in container
+// if modalType === 'edit' {
+// 	this.setState({
+// 			modalOpen: true,
+// 			modalType: buttonText,
+// 			modalCallOrigin: parentId,
+//      inputRecipeTitle: parentId,
+//      inputIngredientList: localStorage[modalCallOrigin].join()
+// 		});		
+// }
+//
+//
+//
+
 function Modal (props) {
 	if (props.modalOpen) {
 		return (
@@ -37,7 +53,7 @@ function Modal (props) {
 Modal.propTypes = {	
 	modalOpen: PropTypes.bool.isRequired,
 	modalType: PropTypes.string.isRequired,
-	recipeOrigin: PropTypes.string.isRequired,
+	modalCallOrigin: PropTypes.string.isRequired,
 	onTextInput: PropTypes.func.isRequired,
 	inputRecipeTitle: PropTypes.string.isRequired,
 	inputIngredientList: PropTypes.string.isRequired,
