@@ -37,6 +37,7 @@ function Modal (props) {
 Modal.propTypes = {	
 	modalOpen: PropTypes.bool.isRequired,
 	modalType: PropTypes.string.isRequired,
+	modalCallOrigin: PropTypes.string.isRequired,
 	onTextInput: PropTypes.func.isRequired,
 	inputRecipeTitle: PropTypes.string.isRequired,
 	inputIngredientList: PropTypes.string.isRequired,

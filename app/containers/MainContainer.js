@@ -14,7 +14,8 @@ var MainContainer = React.createClass({
 		return {
 			browserStorage: localStorage,
 			modalOpen: false,
-			modalType: '',			
+			modalType: '',
+			modalCallOrigin: '',			
 			inputRecipeTitle: '',
 			inputIngredientList: ''			
 		}
@@ -33,7 +34,8 @@ var MainContainer = React.createClass({
 		if(buttonText === 'Edit') {
 			this.setState({
 				modalOpen: true,
-				modalType: buttonText,				
+				modalType: buttonText,
+				modalCallOrigin: parentId,				
 				inputRecipeTitle: parentId,
 				inputIngredientList: localStorage[parentId].slice(1, -1)
 			});
@@ -67,6 +69,7 @@ var MainContainer = React.createClass({
 	  this.setState({
 			modalOpen: false,
 			modalType: '',
+			modalCallOrigin: '',
 			inputRecipeTitle: '',
 			inputIngredientList: ''	
 	  });
@@ -88,6 +91,7 @@ var MainContainer = React.createClass({
 				<Modal 
 					modalOpen={this.state.modalOpen} 
 					modalType={this.state.modalType} 
+					modalCallOrigin={this.state.modalCallOrigin}
 					onTextInput={this.handleTextInput}					
 					inputRecipeTitle={this.state.inputRecipeTitle}
 					inputIngredientList={this.state.inputIngredientList}
