@@ -12,12 +12,13 @@ function Modal (props) {
 					<div className="modal-body">
 						<form>
 							<div className="form-group">
-								<label htmlFor="recipe-title" className="control-label">Recipe</label>
-								<input type="text" id="recipe-title" className="form-control" onChange={props.onTextInput} placeholder="Enter a recipe name"/>
+								<label htmlFor="recipeTitle" className="control-label">Recipe</label>
+								<input type="text" id="recipeTitle" className="form-control" onChange={props.onTextInput} value={props.inputRecipeTitle} placeholder="Enter a recipe name"/>
 							</div>
 							<div className="form-group">
-								<label htmlFor="ingredient-input" className="control-label">Ingredients</label>
-								<input type="text" id="ingredient-input" className="form-control" onChange={props.onTextInput} placeholder="Enter ingredients separated by commas. E.g. 'Tomatoes,Peppers,Beans'"/>
+								<label htmlFor="ingredientInput" className="control-label">Ingredients</label>
+								<textarea name="ingredient-list" id="ingredientInput" className="form-control" onChange={props.onTextInput} value={props.inputIngredientList} placeholder="Enter ingredients separated by commas. E.g. 'Tomatoes,Peppers,Beans'">
+								</textarea>								
 							</div>
 						</form>
 					</div>
@@ -38,8 +39,10 @@ Modal.propTypes = {
 	modalType: PropTypes.string.isRequired,
 	recipeOrigin: PropTypes.string.isRequired,
 	onTextInput: PropTypes.func.isRequired,
+	inputRecipeTitle: PropTypes.string.isRequired,
+	inputIngredientList: PropTypes.string.isRequired,
 	onFormSubmit: PropTypes.func.isRequired,
-	onModalClose: PropTypes.func.isRequired
+	onModalClose: PropTypes.func.isRequired	
 };
 
 module.exports = Modal;
