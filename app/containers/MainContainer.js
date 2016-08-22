@@ -20,8 +20,11 @@ var MainContainer = React.createClass({
 		}
 	},	
 	handleRecipeDelete: function (e) {
-		// delete Recipe from localStorage
-		console.log(e.target.parentNode.id);
+		// delete Recipe from localStorage		
+		localStorage.removeItem(e.target.parentNode.id);		
+		this.setState({
+			browserStorage: localStorage
+		});		
 	},
 	handleModalCall: function (e) {
 		// activate modal 
