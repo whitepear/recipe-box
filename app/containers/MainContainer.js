@@ -37,7 +37,7 @@ var MainContainer = React.createClass({
 				modalType: buttonText,
 				modalCallOrigin: parentId,				
 				inputRecipeTitle: parentId,
-				inputIngredientList: localStorage[parentId].slice(1, -1)
+				inputIngredientList: JSON.parse(localStorage[parentId]).toString()
 			});
 		} else if (buttonText === 'Add Recipe') {
 			this.setState({
@@ -58,19 +58,22 @@ var MainContainer = React.createClass({
 			});
 		}
 	},
-	handleFormSubmit: function (e) {
-		console.log(e.target);
-		if (this.state.modalType === 'Edit') {
-
-		} else if (this.state.modalType === 'Add') {
-
-		}
-    // check button value (edit or add)
-    // and modify localStorage accordingly		
+	handleFormSubmit: function (e) {		
+		// Handle case where either title-input field is empty
+		// Handle case where either input field consists solely of spaces
+		
+		var ingredientArray = this.state.inputIngredientList.split(',');		
+		if (this.state.modalType === 'Edit' && this.state.inputRecipeTitle !== this.state.modalCallOrigin) {
+			// if editing a recipe and editing its title, a new localStorage property must be created and 
+			// the original property must be deleted in order to simulate "overwriting" a property
+			localStorage.removeItem(this.state.modalCallOrigin);
+		} 			
+			localStorage.setItem(this.state.inputRecipeTitle, JSON.stringify(ingredientArray));
+			this.handleModalClose();		    	
 	},
-	handleModalClose: function (e) {
-		console.log(e.target);
+	handleModalClose: function (e) {				
 	  this.setState({
+	  	browserStorage: localStorage,
 			modalOpen: false,
 			modalType: '',
 			modalCallOrigin: '',
