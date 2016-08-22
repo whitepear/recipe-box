@@ -23,7 +23,7 @@ function Modal (props) {
 						</form>
 					</div>
 					<div className="modal-footer">						
-						<button type="button" className="btn btn-success" onClick={props.onFormSubmit}>{props.modalType} Recipe</button>						
+						<button type="button" className="btn btn-success" disabled={props.inputRecipeTitle.trim().length === 0} onClick={props.onFormSubmit}>{props.modalType} Recipe</button>						
 						<button type="button" className="btn btn-warning" onClick={props.onModalClose}>Close</button>
 					</div>
 				</div>
