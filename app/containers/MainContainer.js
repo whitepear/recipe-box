@@ -40,7 +40,7 @@ var MainContainer = React.createClass({
 		} else if (buttonText === 'Add Recipe') {
 			this.setState({
 				modalOpen: true,
-				modalType: buttonText				
+				modalType: buttonText.slice(0,4)				
 			});		
 		}		
 	},	
@@ -92,8 +92,8 @@ var MainContainer = React.createClass({
 					inputRecipeTitle={this.state.inputRecipeTitle}
 					inputIngredientList={this.state.inputIngredientList}
 					onFormSubmit={this.handleFormSubmit}
-					onModalClose={this.handleModalClose}
-					/>				
+					onModalClose={this.handleModalClose} />		
+					<button type="button" className="btn btn-success" onClick={this.handleModalCall}>Add Recipe</button>		
 			</div>			
 		)
 	}
