@@ -42,7 +42,7 @@ var MainContainer = React.createClass({
 		} else if (buttonText === 'Add Recipe') {
 			this.setState({
 				modalOpen: true,
-				modalType: buttonText.slice(0,4)				
+				modalType: buttonText.slice(0,3)				
 			});		
 		}		
 	},	
@@ -60,7 +60,11 @@ var MainContainer = React.createClass({
 	},
 	handleFormSubmit: function (e) {
 		console.log(e.target);
+		if (this.state.modalType === 'Edit') {
 
+		} else if (this.state.modalType === 'Add') {
+
+		}
     // check button value (edit or add)
     // and modify localStorage accordingly		
 	},
