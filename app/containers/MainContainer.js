@@ -14,8 +14,7 @@ var MainContainer = React.createClass({
 		return {
 			browserStorage: localStorage,
 			modalOpen: false,
-			modalType: '',
-			modalCallOrigin: '',
+			modalType: '',			
 			inputRecipeTitle: '',
 			inputIngredientList: ''			
 		}
@@ -25,14 +24,22 @@ var MainContainer = React.createClass({
 		console.log(e.target.parentNode.id);
 	},
 	handleModalCall: function (e) {
-		// activate modal (open and type)
+		// activate modal 
 		var buttonText = e.target.innerText;
 		var parentId = e.target.parentNode.id;
-		this.setState({
-			modalOpen: true,
-			modalType: buttonText,
-			modalCallOrigin: parentId
-		});		
+		if(buttonText === 'Edit') {
+			this.setState({
+				modalOpen: true,
+				modalType: buttonText,				
+				inputRecipeTitle: parentId,
+				inputIngredientList: localStorage[parentId]
+			});
+		} else if (buttonText === 'Add Recipe') {
+			this.setState({
+				modalOpen: true,
+				modalType: buttonText				
+			});		
+		}		
 	},	
 	handleTextInput: function (e) {
 		console.log();
@@ -76,7 +83,6 @@ var MainContainer = React.createClass({
 				<Modal 
 					modalOpen={this.state.modalOpen} 
 					modalType={this.state.modalType} 
-					modalCallOrigin={this.state.modalCallOrigin}
 					onTextInput={this.handleTextInput}					
 					inputRecipeTitle={this.state.inputRecipeTitle}
 					inputIngredientList={this.state.inputIngredientList}
