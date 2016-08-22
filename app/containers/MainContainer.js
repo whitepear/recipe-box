@@ -49,25 +49,27 @@ var MainContainer = React.createClass({
 		if (e.target.id === 'recipeTitle') {
 			this.setState({
 				inputRecipeTitle: e.target.value
-			}, function () {
-				console.log(this.state);
 			});
 		} else if (e.target.id === 'ingredientInput') {
 			this.setState({
 				inputIngredientList: e.target.value
-			}, function () {
-				console.log(this.state);
 			});
 		}
 	},
 	handleFormSubmit: function (e) {
 		console.log(e.target);
+
     // check button value (edit or add)
     // and modify localStorage accordingly		
 	},
 	handleModalClose: function (e) {
 		console.log(e.target);
-	// modal will likely be passed a function that updates state on close, reset body header field states too
+	  this.setState({
+			modalOpen: false,
+			modalType: '',
+			inputRecipeTitle: '',
+			inputIngredientList: ''	
+	  });
 	},	
 	render: function () {
 		var key = 0;
