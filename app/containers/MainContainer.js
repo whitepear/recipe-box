@@ -27,7 +27,7 @@ var MainContainer = React.createClass({
 		});		
 	},
 	handleModalCall: function (e) {
-		// activate modal 
+		// activate modal: prepopulate modal fields if an edit
 		var buttonText = e.target.innerText;
 		var parentId = e.target.parentNode.id;
 		if(buttonText === 'Edit') {
@@ -35,7 +35,7 @@ var MainContainer = React.createClass({
 				modalOpen: true,
 				modalType: buttonText,				
 				inputRecipeTitle: parentId,
-				inputIngredientList: localStorage[parentId]
+				inputIngredientList: localStorage[parentId].slice(1, -1)
 			});
 		} else if (buttonText === 'Add Recipe') {
 			this.setState({
@@ -45,7 +45,7 @@ var MainContainer = React.createClass({
 		}		
 	},	
 	handleTextInput: function (e) {
-		console.log();
+		// handles text input state for recipe and ingredients within modal
 		if (e.target.id === 'recipeTitle') {
 			this.setState({
 				inputRecipeTitle: e.target.value
