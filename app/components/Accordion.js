@@ -31,10 +31,10 @@ var Accordion = React.createClass({
 			<div className="accordion-unit">
 				<div className="accordion-header" onClick={this.toggleOpen}>{this.props.recipeName}</div>
 				<div className={this.getOpenHeight()} >
-					<div>Ingredients</div>
-					<div>
+					<div className="text-center ingredient-title">Ingredients</div>					
+					<div className="ingredient-list">
 						{JSON.parse(this.props.ingredients).map(function (ingredient) {
-							return <div key={key++}>{ingredient}</div>
+							return <div key={key++} className="single-ingredient">{ingredient}</div>
 						})}
 					</div>
 					<div id={this.props.recipeName}>

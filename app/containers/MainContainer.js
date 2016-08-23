@@ -85,6 +85,7 @@ var MainContainer = React.createClass({
 		var key = 0;
 		return (
 			<div className="container">
+				<h1>Recipe Creator</h1>
 				<div className="accordion-container">
 					{Object.keys(this.state.browserStorage).map(function (recipeName) {
 						return <Accordion 
@@ -94,7 +95,7 @@ var MainContainer = React.createClass({
 											onModalCall={this.handleModalCall}	
 											onRecipeDelete={this.handleRecipeDelete} />
 					}.bind(this))}
-					<button type="button" className="btn btn-success" onClick={this.handleModalCall}>Add Recipe</button>	
+					<button type="button" className="btn btn-lg btn-success" onClick={this.handleModalCall}>Add Recipe</button>	
 				</div>
 				<Modal 
 					modalOpen={this.state.modalOpen} 
