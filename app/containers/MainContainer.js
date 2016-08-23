@@ -94,6 +94,7 @@ var MainContainer = React.createClass({
 											onModalCall={this.handleModalCall}	
 											onRecipeDelete={this.handleRecipeDelete} />
 					}.bind(this))}
+					<button type="button" className="btn btn-success" onClick={this.handleModalCall}>Add Recipe</button>	
 				</div>
 				<Modal 
 					modalOpen={this.state.modalOpen} 
@@ -103,8 +104,7 @@ var MainContainer = React.createClass({
 					inputRecipeTitle={this.state.inputRecipeTitle}
 					inputIngredientList={this.state.inputIngredientList}
 					onFormSubmit={this.handleFormSubmit}
-					onModalClose={this.handleModalClose} />		
-					<button type="button" className="btn btn-success" onClick={this.handleModalCall}>Add Recipe</button>		
+					onModalClose={this.handleModalClose} />								
 			</div>			
 		)
 	}
