@@ -78,6 +78,7 @@ h1 {
 	padding: 10px 0px;
 	border-bottom: 1px solid #fff;
 	font-size: 25px;
+	color: #333;
 }
 
 .ingredient-list {
@@ -137,4 +138,20 @@ h1 {
 
 textarea {
 	resize: vertical;
+}
+
+
+// MEDIA QUERIES
+////////////////////////////////////////
+
+@media (max-width: 992px) {
+	h1 {
+		font-size: 54px;
+	}
+}
+
+@media (max-width: 767px) {
+	h1 {
+		font-size: 32px;
+	}
 }
