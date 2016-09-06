@@ -40,7 +40,7 @@ h1 {
 
 .accordion-unit {		
 	margin: 5px;
-	background: #FFD476;
+	background: #fff;
 	border-radius: 5px;
 }
 
@@ -57,7 +57,7 @@ h1 {
 }
 
 .accordion-body {
-	background: #FFD476;
+	background: #fff;
 	border-radius: 5px;
 	color: #333;
 	overflow: hidden;
@@ -77,27 +77,25 @@ h1 {
 	width: 98%;
 	margin: 10px auto 15px;
 	padding: 10px 0px;
-	border-bottom: 1px solid #fff;
-	font-size: 25px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ddd;
+	font-size: 28px;
 	color: #333;
 }
 
 .ingredient-list {
 	background: #fff;
 	color: #000;
-	font-size: 18px;
-	margin: 0px auto;
-	border-top: 1px solid #ccc;
-	border-left: 1px solid #ccc;
-	border-right: 1px solid #ccc;	
-	border-radius: 7px;
+	font-size: 22px;
+	margin: 0px auto;	
 	width: 98%;
 	margin-bottom: 20px;
 }
 
 .single-ingredient {		
 	padding: 10px;	
-	border-bottom: 1px solid #ccc;
+	padding-top: 20px;
+	border-bottom: 1px solid #ddd;
 }
 
 .accordion-unit button {
