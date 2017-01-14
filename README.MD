@@ -1,13 +1,5 @@
-FreeCodeCamp coursework project: Build a Recipe Box  
-https://www.freecodecamp.com/challenges/build-a-recipe-box  
+This application is live at: https://whitepear.github.io/projects/react/recipe/app/index.html
 
-Built using react.js and SASS.
+A React.js application that allows users to create recipes with an associated list of ingredients. Recipes can be edited and deleted after creation, and are saved within the browser's local storage.
 
-User Stories:  
-
-User Story: I can create recipes that have names and ingredients.  
-User Story: I can see an index view where the names of all the recipes are visible.  
-User Story: I can click into any of those recipes to view it.  
-User Story: I can edit these recipes.  
-User Story: I can delete these recipes.  
-User Story: All new recipes I add are saved in my browser's local storage. If I refresh the page, these recipes will still be there.
+The application architecture is designed around a stateful container component which contains two nested components - one stateful Accordion component and one functional Modal component. The application is responsively-designed and styled with Sass.
